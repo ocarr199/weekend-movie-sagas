@@ -52,6 +52,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const details = (state ={}, action) => {
     if (action.type === 'MOVIE_DETAILS'){
+        // state is = details from MovieList.jsx
         return action.payload
     }
     return state
@@ -74,6 +75,9 @@ const genres = (state = [], action) => {
             return action.payload;
         case 'FILTER_GENRES':
             const keptGenres = genre => genre.title == action.payload
+            // filter out all objects in genre where title isnt = the title of the movie clicked on
+            // state is the list of rows where the title is the title of the movie we clicked on
+            // giving access to all genres the movie has
             return state.filter(keptGenres) ;
         default:
             return state;
