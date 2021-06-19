@@ -15,14 +15,16 @@ function Details() {
         <h1>{details.title}</h1>
      <img src={details.poster}></img>
      <p>{details.description}</p>
-     {/* <ul>
-     {filteredGenres.map(filtered => {
-            console.log(filtered)
+      <h1>Genres</h1>
+      <ul>
+      {genres.map(genre => {
                     return (
-                    <li>{filtered.title}</li>
+                        <li key={genre.id} >
+                            {genre.name}
+                        </li>
                     );
                 })}
-     </ul> */}
+      </ul>
       </>
     );
   }
