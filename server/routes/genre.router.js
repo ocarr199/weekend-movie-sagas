@@ -1,5 +1,4 @@
 const express = require('express');
-const { default: MovieList } = require('../../src/components/MovieList/MovieList');
 const router = express.Router();
 const pool = require('../modules/pool')
 
