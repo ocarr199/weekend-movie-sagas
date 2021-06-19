@@ -5,12 +5,16 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 function AddMovie () {
     let [title, setTitle] = useState('');
     let [poster, setPoster] = useState('');
     let [description, setDescription] = useState('');
     let [genre, setGenre] = useState('');
     const dispatch = useDispatch();
+
+    const history = useHistory();
+
 
     const handleTitleChange = (event) => {
         console.log('event happened');
@@ -40,9 +44,12 @@ function AddMovie () {
       console.log('hello')
         console.log(title)
         dispatch({ type: 'POST_MOVIE', payload: {title: title, poster: poster, description: description, genre_id: genre} });
-        // dispatch({ type: 'POST_GENRE' });
-
+        history.push('/')
 }
+
+  const goHome = () => {
+    history.push('/')
+  }
 console.log(title)
     return (
             <> 
@@ -65,14 +72,10 @@ console.log(title)
                   label="Description" 
                   variant="outlined" />
                   <Select
-                    //  native
+                    
                      defaultValue=''
                      onChange={handleGenreChange}
-                    //   onChange={handleChange}
-        //   inputProps={{
-        //     name: 'age',
-        //     id: 'filled-age-native-simple',
-        //   }}
+
         displayEmpty
         >
           <MenuItem aria-label="None" value={genre} />
@@ -95,7 +98,13 @@ console.log(title)
         type="submit"
         variant="contained" 
         color="primary">
-        Primary
+        Save
+      </Button>
+      <Button 
+        onClick={goHome}
+        variant="contained" 
+        color="primary">
+        Cancel
       </Button>
         </form>
             </>
