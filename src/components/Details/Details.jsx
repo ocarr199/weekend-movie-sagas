@@ -30,6 +30,11 @@ const id = useParams()
       history.push('/')
     }
 
+    const editMovie = () => {
+      dispatch({type: "SET_EDIT_MOVIE", payload: details })
+      history.push('/edit')
+    }
+
     return (
       <>
             <Button 
@@ -39,7 +44,16 @@ const id = useParams()
         color="primary">
         Home
       </Button>
-      <Card variant="outlined">
+
+      <Button 
+        
+        onClick={editMovie}
+        variant="contained" 
+        color="primary">
+        Edit
+      </Button>
+      <Card variant="outlined"
+      style={{backgroundColor:"#F5F5DC", margin:"30px"}}>
 
         <Typography variant="h2" component="h2">
        {details.title}
