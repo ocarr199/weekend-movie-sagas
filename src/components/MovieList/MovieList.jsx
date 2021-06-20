@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import './MovieList.css'
 
 function MovieList() {
@@ -28,7 +31,7 @@ const goToDetails = (details) => {
     dispatch({type: 'MOVIE_DETAILS', payload: details })
     // send the details.title to the genres reducer
     dispatch({type: 'FILTER_GENRES', payload: details.title})
-    history.push(`/details`)
+    history.push(`/details/${details.id}`)
 }
     return (
         <main>
@@ -40,20 +43,31 @@ const goToDetails = (details) => {
         color="primary">
         Add Movie
       </Button>
+
+       
             <section className="movies">
                 {/* variable of movie declared */}
                 {movies.map(movie => {
                     return (
+                        <Card variant="outlined">
+                                 <CardContent>
                         <div key={movie.id} >
-                            <Link to={`/details/${movie.id}`}>
-                            <h3>{movie.title}</h3>
+                            
+                            <Typography variant="h5" component="h2">
+                            {movie.title}
+                              </Typography>
+                            
                             {/* run function go to details with the object of movie from the image clicked on */}
                             <img onClick={event => goToDetails(movie)} src={movie.poster} alt={movie.title}/>
-                            </Link>
+                
                         </div>
+                        </CardContent>
+                        </Card>
                     );
                 })}
+                
             </section>
+           
         </main>
 
     );
