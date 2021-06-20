@@ -29,9 +29,9 @@ const goToDetails = (details) => {
     // the details are the movie object
     console.log('THE DETAILS ARE ',details)
     // send details aka movie to the details reducer in index.js
-    dispatch({type: 'MOVIE_DETAILS', payload: details })
-    // send the details.title to the genres reducer
-    dispatch({type: 'FILTER_GENRES', payload: details.title})
+    // dispatch({type: 'MOVIE_DETAILS', payload: details })
+    // // send the details.title to the genres reducer
+    // dispatch({type: 'FILTER_GENRES', payload: details.title})
     history.push(`/details/${details.id}`)
 }
     return (

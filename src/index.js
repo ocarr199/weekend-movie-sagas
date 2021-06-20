@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('POST_MOVIE', postMovie)
     yield takeEvery('REFRESH_MOVIE', fetchMovie)
+    yield takeEvery('REFRESH_GENRES', fetchGenre)
 }
 
 function* postMovie(action){
@@ -49,6 +50,21 @@ function* fetchMovie(action) {
         const movie = yield axios.get(`/api/movie/${action.payload.id}`);
         console.log('get all movies :', movie.data);
         yield put({ type: 'MOVIE_DETAILS', payload: movie.data[0] });
+        
+    } catch {
+        console.log('get all movies error');
+    }
+        
+}
+
+
+function* fetchGenre(action) {
+    // get all movies from the DB
+    console.log(action.payload)
+    try {
+        const genre = yield axios.get(`/api/genre/${action.payload.id}`);
+        console.log('get specific genre :', genre.data);
+        yield put({ type: 'SET_GENRES', payload: genre.data });
         
     } catch {
         console.log('get all movies error');
@@ -101,11 +117,12 @@ const genres = (state = [], action) => {
         case 'SET_GENRES':
             return action.payload;
         case 'FILTER_GENRES':
-            const keptGenres = genre => genre.title == action.payload
+            console.log('action payload in filter genres ',action.payload)
+            // const keptGenres = genre => genre.title == action.payload
             // filter out all objects in genre where title isnt = the title of the movie clicked on
             // state is the list of rows where the title is the title of the movie we clicked on
             // giving access to all genres the movie has
-            return state.filter(keptGenres) ;
+            return action.payload ;
             case 'REFRESH_GENRES':
                 return state;
         default:
