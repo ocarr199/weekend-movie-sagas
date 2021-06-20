@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+
+
+
 router.get('/', (req, res) => {
   // Add query to get all genres
 // selecting all of the movie.titles and genres.names from the datbase

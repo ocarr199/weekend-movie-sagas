@@ -6,18 +6,20 @@ import React, { useEffect } from 'react';
 function Details() {
   // accessing the details reducer which hold the object of the movie that was clicked on 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({type: 'REFRESH_DETAILS',})
-    // send the details.title to the genres reducer
-    dispatch({type: 'REFRESH_GENRES'})
-}, []);
-    const details = useSelector(store => store.details);
+const id = useParams()
+  const details = useSelector(store => store.details);
   // accessing the genres selector after a movie was clicked on on the genres of that movie are 
   // held in the genres state
     const genres = useSelector(store => store.genres)
-    console.log('IN DETAILS ROUTE',details)
 
-    const { id } = useParams()
+  useEffect(() => {
+    dispatch({type: 'REFRESH_MOVIE', payload: id})
+    // // send the details.title to the genres reducer
+    // dispatch({type: 'REFRESH_GENRES'})
+}, []);
+
+    console.log('IN DETAILS ROUTE', details)
+
 
     const history = useHistory();
 

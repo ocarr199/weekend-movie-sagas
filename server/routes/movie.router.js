@@ -16,6 +16,23 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/:id', (req, res) => {
+  console.log('in get id router')
+    const detailsID = req.params.id
+  const query = `SELECT * FROM movies
+                  WHERE "movies".id = $1;`;
+  pool.query(query, [detailsID])
+    .then( result => {
+      console.log(result.rows)
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
+
+});
+
 
 router.post('/', (req, res) => {
   console.log('this is the req.body', req.body);
