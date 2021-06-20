@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { useHistory, useParams } from 'react-router-dom';
 import React, { useEffect } from 'react';
-
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 function Details() {
   // accessing the details reducer which hold the object of the movie that was clicked on 
   const dispatch = useDispatch();
@@ -38,20 +39,28 @@ const id = useParams()
         color="primary">
         Home
       </Button>
-        <h1>{details.title}</h1>
+      <Card variant="outlined">
+
+        <Typography variant="h2" component="h2">
+       {details.title}
+        </Typography>
      <img src={details.poster}></img>
      <p>{details.description}</p>
-      <h1>Genres</h1>
-      {/* make a list of all the genres the movie belongs to */}
-      <ul>
+     <Typography variant="h3" component="h3">
+      Genres:    
+   
+      </Typography>
       {genres.map(genre => {
                     return (
-                        <li key={genre.id} >
+                        <p key={genre.id} >
                             {genre.name}
-                        </li>
+                        </p>
                     );
                 })}
-      </ul>
+      {/* make a list of all the genres the movie belongs to */}
+   
+   
+      </Card>
       </>
     );
   }
