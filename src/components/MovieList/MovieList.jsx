@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import './MovieList.css'
 
@@ -28,7 +28,7 @@ const goToDetails = (details) => {
     dispatch({type: 'MOVIE_DETAILS', payload: details })
     // send the details.title to the genres reducer
     dispatch({type: 'FILTER_GENRES', payload: details.title})
-    history.push('/details')
+    history.push(`/details`)
 }
     return (
         <main>
@@ -45,9 +45,11 @@ const goToDetails = (details) => {
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
+                            <Link to={`/details/${movie.id}`}>
                             <h3>{movie.title}</h3>
                             {/* run function go to details with the object of movie from the image clicked on */}
                             <img onClick={event => goToDetails(movie)} src={movie.poster} alt={movie.title}/>
+                            </Link>
                         </div>
                     );
                 })}

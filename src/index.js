@@ -58,11 +58,12 @@ function* fetchAllGenres() {
 const sagaMiddleware = createSagaMiddleware();
 
 
-
 const details = (state ={}, action) => {
     if (action.type === 'MOVIE_DETAILS'){
         // state is = details from MovieList.jsx
         return action.payload
+    }if (action.type === "RELOAD_DETAILS"){
+        return state
     }
     return state
 }
@@ -90,6 +91,8 @@ const genres = (state = [], action) => {
             // state is the list of rows where the title is the title of the movie we clicked on
             // giving access to all genres the movie has
             return state.filter(keptGenres) ;
+            case 'REFRESH_GENRES':
+                return state;
         default:
             return state;
     }
