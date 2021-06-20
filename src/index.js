@@ -43,6 +43,7 @@ function* fetchAllMovies() {
         
 }
 
+// fetch movie from the DB that have a movie.id of the payload.id
 function* fetchMovie(action) {
     // get all movies from the DB
     console.log(action.payload)
@@ -57,7 +58,7 @@ function* fetchMovie(action) {
         
 }
 
-
+// fetch genres from the DB that have a movie.id of the payload.id
 function* fetchGenre(action) {
     // get all movies from the DB
     console.log(action.payload)
@@ -88,7 +89,7 @@ function* fetchAllGenres() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-
+// used to store movie after clicked up to show on details screen
 const details = (state ={}, action) => {
     if (action.type === 'MOVIE_DETAILS'){
         // state is = details from MovieList.jsx
@@ -130,7 +131,7 @@ const genres = (state = [], action) => {
     }
 }
 
-
+// used to edit movie after selected from details screen
 const editMovie = (state = {}, action) => {
     if (action.type === "SET_EDIT_MOVIE"){
         return action.payload

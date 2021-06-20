@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
-
+// get specific genres from DB for details page
 
 router.get('/:id', (req, res) => {
   // Add query to get all genres

@@ -15,30 +15,26 @@ function AddMovie () {
 
     const history = useHistory();
 
-
+// hamdle change for inputs
     const handleTitleChange = (event) => {
-        console.log('event happened');
-        //Similar to in redux -- we dont want to get rid of the id field when we update name
+        console.log('title changed');
         setTitle(event.target.value)
     }
     const handleUrlChange = (event) => {
-        console.log('event happened');
-        //Similar to in redux -- we dont want to get rid of the id field when we update name
+        console.log('url changed');
         setPoster(event.target.value)
     }
     const handleDescriptionChange = (event) => {
-        console.log('event happened');
-        //Similar to in redux -- we dont want to get rid of the id field when we update name
+        console.log('event descriptio changed');
         setDescription(event.target.value)
     }
 
     const handleGenreChange = (event) => {
-      console.log('event happened');
-      //Similar to in redux -- we dont want to get rid of the id field when we update name
+      console.log('genre changed');
       setGenre(event.target.value)
   }
 
-
+// function to send the movie object to a redux saga
     const postMovie = () => {
       event.preventDefault();
       console.log('hello')

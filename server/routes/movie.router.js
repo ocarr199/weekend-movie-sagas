@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 
 });
 
+// get specific movie for details page
 router.get('/:id', (req, res) => {
   console.log('in get id router')
     const detailsID = req.params.id

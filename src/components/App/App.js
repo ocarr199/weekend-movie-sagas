@@ -17,6 +17,7 @@ function App() {
         {/* Details page */}
         <Route path="/details/:id" >
           <Details />
+          {/* edit page */}
         </Route>
         <Route path="/edit" >
           <EditForm />
