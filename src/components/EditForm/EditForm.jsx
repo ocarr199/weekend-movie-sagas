@@ -10,18 +10,31 @@ import { useHistory } from 'react-router-dom';
 
 function EditForm (){
 
+const movieToEdit = useSelector((store) => store.editMovie)
+console.log(movieToEdit)
 
+const dispatch = useDispatch();
+
+const history = useHistory();
+
+
+const handleTitleChange = (event) => {
+    dispatch({
+        type: "EDIT_TITLE_ONCHANGE",
+        payload: { property: 'title', value: event.target.value}
+    })
+}
     return (
         <> 
         <h2>Add Movie</h2>
         <form >
               <TextField 
-            //   value={title}
-            //   onChange={handleTitleChange} 
+              value={movieToEdit.title}
+              onChange={handleTitleChange} 
               id="outlined-title" label="Movie Title"
                variant="outlined" />
               <TextField
-            //    value={poster} 
+               value={movieToEdit.description} 
             //    onChange={handleUrlChange} 
                id="outlined-url" label="Movie decsiption"
                 variant="outlined" />
